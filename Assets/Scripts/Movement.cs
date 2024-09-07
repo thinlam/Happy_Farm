@@ -4,24 +4,30 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public float speed;
+    public float speed = 2;
 
     public Animator animator;
+
+    private Vector3 direction;
     // get input from player
     // apply movement to sprite 
 
-    private void Update() // 
+    private void Update() // bản cập nhật thường xuyên 
     {
         
         float horizontal = Input.GetAxisRaw("Horizontal");//Left right (trái phải)
         
         float vertical = Input.GetAxisRaw("Vertical");//Up Down (lên xuống) 
 
-        Vector3 direction = new Vector3(horizontal, vertical);
+        direction = new Vector3(horizontal, vertical, 0);
         AnimateMovement(direction);// Chức năng chuyển động hoạt hình và chuyển hướng vào nó . 
-        transform.position += direction * speed * Time.deltaTime;
+        
     }
-    void AnimateMovement(Vector3 direction)
+    private void FixedUpdate() // bản cập nhật cố định 
+    {
+        transform.position += direction * speed * Time.deltaTime;//move the player
+    }
+    private void AnimateMovement(Vector3 direction)
     {
         if (animator != null) // if này để kiểm tra gúa trị của trình hoạt ảnh có phải là NULL hay không 
         {
