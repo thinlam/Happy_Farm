@@ -11,7 +11,7 @@ public class Inventory // kho lưu trữ
     {
         
         public CollectableType type;
-        public int count;//biến cao sẽ theo dõi có bao nhiêu mục trong slot
+        public int count;//biến count sẽ theo dõi có bao nhiêu mục trong slot
         public int maxAllowed;//theo dõi mức tối đa
 
         public Slot()
